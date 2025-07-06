@@ -1,46 +1,31 @@
-export interface CountryCardProps {
-  code: string;
-  name: string;
-  currency: string;
-  continent: string;
-  language: string;
-  capital: string;
-  className?: string;
-  onClick?: () => void;
-}
+import type { CountryProps } from "../types/Country.types";
 
-function CountryCard({
-  code,
-  name,
-  currency,
-  continent,
-  language,
-  capital,
-  className,
-  onClick,
-}: CountryCardProps) {
+function CountryCard({ country }: { country: CountryProps }) {
   return (
     <div
-      className={`country-card card mb-3 ${className ?? ""}`}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      style={{ cursor: onClick ? "pointer" : "default" }}
+      className={`country-card card mb-3 ${country.className ?? ""}`}
+      onClick={country.onClick}
+      role={country.onClick ? "button" : undefined}
+      style={{ cursor: country.onClick ? "pointer" : "default" }}
     >
       <div className="card-body">
         <h5 className="card-title mb-2">
-          {name} ({code})
+          {country.name} ({country.code})
         </h5>
         <p className="card-text mb-1">
-          <strong>Capital:</strong> {capital}
+          <strong>Capital:</strong> {country.capital}
         </p>
         <p className="card-text mb-1">
-          <strong>Continente:</strong> {continent}
+          <strong>Continente:</strong> {country.continent}
         </p>
         <p className="card-text mb-1">
-          <strong>Idioma:</strong> {language}
+          <strong>Idioma:</strong> {country.language}
         </p>
         <p className="card-text mb-0">
-          <strong>Moneda:</strong> {currency}
+          <strong>Moneda:</strong> {country.currency}
+        </p>
+        <p className="card-text mb-0">
+          <strong>Bandera:</strong> {country.emoji}
         </p>
       </div>
     </div>

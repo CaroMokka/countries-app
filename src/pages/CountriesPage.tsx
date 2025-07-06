@@ -15,6 +15,7 @@ function CountriesPage() {
       continent: "América del Sur",
       language: "Español",
       capital: "Buenos Aires",
+      emoji: "🇦🇷",
     },
   ];
   function navigate(path: string) {
