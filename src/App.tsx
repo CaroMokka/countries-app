@@ -1,11 +1,14 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CountriesPage from "./pages/CountriesPage";
 import CountryPage from "./pages/CountryPage";
 function App() {
   return (
-    <>
-      <CountriesPage />
-      <CountryPage />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<CountriesPage />} />
+        <Route path="/country/:code" element={<CountryPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

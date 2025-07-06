@@ -1,18 +1,25 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import CountryCard from "../components/CountryCard";
 
 function CountryPage() {
-  //   const { countryCode } = useParams<{ countryCode: string }>();
+  const { countryCode } = useParams<{ countryCode: string }>();
+  console.log("Country Code", countryCode);
 
   const countryMock = {
-    code: "AR",
-    name: "Argentina",
-    currency: "Peso Argentino",
-    continent: "América del Sur",
-    language: "Español",
-    capital: "Buenos Aires",
-    emoji: "🇦🇷",
+    code: "AG",
+    name: "Antigua and Barbuda",
+    currency: "XCD",
+    continent: {
+      name: "North America",
+    },
+    capital: "Saint John's",
+    languages: [
+      {
+        name: "English",
+      },
+    ],
+    emoji: "🇦🇬",
   };
   return (
     <div className="container">

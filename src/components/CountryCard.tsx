@@ -1,12 +1,18 @@
-import type { CountryProps } from "../types/Country.types";
+import type { CountryCardProps } from "../types";
+import { Link } from "react-router-dom";
 
-function CountryCard({ country }: { country: CountryProps }) {
+function CountryCard({
+  country,
+  className,
+  onClick,
+  showDetailButton = true,
+}: CountryCardProps) {
   return (
     <div
-      className={`country-card card mb-3 ${country.className ?? ""}`}
-      onClick={country.onClick}
-      role={country.onClick ? "button" : undefined}
-      style={{ cursor: country.onClick ? "pointer" : "default" }}
+      className={`country-card card mb-3 ${className ?? ""}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      style={{ cursor: onClick ? "pointer" : "default" }}
     >
       <div className="card-body">
         <h5 className="card-title mb-2">
@@ -16,10 +22,10 @@ function CountryCard({ country }: { country: CountryProps }) {
           <strong>Capital:</strong> {country.capital}
         </p>
         <p className="card-text mb-1">
-          <strong>Continente:</strong> {country.continent}
+          <strong>Continente:</strong> {country.continent.name}
         </p>
         <p className="card-text mb-1">
-          <strong>Idioma:</strong> {country.language}
+          <strong>Idioma:</strong> {country.languages[0].name}
         </p>
         <p className="card-text mb-0">
           <strong>Moneda:</strong> {country.currency}
@@ -27,6 +33,14 @@ function CountryCard({ country }: { country: CountryProps }) {
         <p className="card-text mb-0">
           <strong>Bandera:</strong> {country.emoji}
         </p>
+        {showDetailButton && (
+          <Link
+            to={`/country/${country.code}`}
+            className="btn btn-sm btn-warning my-3"
+          >
+            Ver detalle
+          </Link>
+        )}
       </div>
     </div>
   );

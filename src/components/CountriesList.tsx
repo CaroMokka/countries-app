@@ -1,11 +1,5 @@
-import type { CountryProps } from "../types/Country.types";
+import type { CountriesListProps } from "../types";
 import CountryCard from "./CountryCard";
-
-interface CountriesListProps {
-  countries: CountryProps[];
-  onCountryClick?: (code: string) => void; // opcional: navegación o acción
-  className?: string; // por si quieres personalizar la grilla
-}
 
 function CountriesList({
   countries,
@@ -22,12 +16,10 @@ function CountriesList({
         {countries.map((country) => (
           <div key={country.code} className="col-12 col-md-6 col-lg-4 mb-4">
             <CountryCard
-              country={{
-                ...country,
-                onClick: onCountryClick
-                  ? () => onCountryClick(country.code)
-                  : undefined,
-              }}
+              country={country}
+              onClick={
+                onCountryClick ? () => onCountryClick(country.code) : undefined
+              }
             />
           </div>
         ))}

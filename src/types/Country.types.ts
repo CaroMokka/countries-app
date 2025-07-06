@@ -1,11 +1,11 @@
-export interface CountryProps {
+export interface Country {
   code: string;
   name: string;
   currency: string;
-  continent: string;
-  language: string;
+  continent: { name: string };
   capital: string;
   emoji: string;
-  className?: string;
-  onClick?: () => void;
+  languages: {
+    name: string;
+  }[];
 }

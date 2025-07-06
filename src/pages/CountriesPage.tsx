@@ -9,13 +9,19 @@ function CountriesPage() {
   const [currency, setCurrency] = useState<string>("");
   const countriesMock = [
     {
-      code: "AR",
-      name: "Argentina",
-      currency: "Peso Argentino",
-      continent: "América del Sur",
-      language: "Español",
-      capital: "Buenos Aires",
-      emoji: "🇦🇷",
+      code: "AG",
+      name: "Antigua and Barbuda",
+      currency: "XCD",
+      continent: {
+        name: "North America",
+      },
+      capital: "Saint John's",
+      languages: [
+        {
+          name: "English",
+        },
+      ],
+      emoji: "🇦🇬",
     },
   ];
   function navigate(path: string) {
