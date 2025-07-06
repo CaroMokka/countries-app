@@ -1,9 +1,6 @@
+import CountriesPage from "./pages/CountriesPage";
 function App() {
-  return (
-    <>
-      <h1>Countries App</h1>
-    </>
-  );
+  return <CountriesPage />;
 }
 
 export default App;
