@@ -1,33 +1,31 @@
 import { useParams } from "react-router-dom";
+import { countriesMock } from "../mocks/countriesMock";
 import PageTitle from "../components/PageTitle";
 import CountryCard from "../components/CountryCard";
 
 function CountryPage() {
-  const { countryCode } = useParams<{ countryCode: string }>();
-  console.log("Country Code", countryCode);
+  const { id } = useParams<{ id: string }>();
+  const country = countriesMock.find(
+    (item) => item.code.toLowerCase() === id?.toLowerCase()
+  );
+  console.log(country);
 
-  const countryMock = {
-    code: "AG",
-    name: "Antigua and Barbuda",
-    currency: "XCD",
-    continent: {
-      name: "North America",
-    },
-    capital: "Saint John's",
-    languages: [
-      {
-        name: "English",
-      },
-    ],
-    emoji: "🇦🇬",
-  };
+  if (!country) {
+    return (
+      <div className="container">
+        <PageTitle title="País no encontrado" />
+        <p>No se encontró el país solicitado.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="container">
       <div className="row">
-        <PageTitle title={`Detalle de ${countryMock.name}`} />
+        <PageTitle title={`Detalle de ${country.name}`} />
       </div>
       <div className="row">
-        <CountryCard country={countryMock} />
+        <CountryCard country={country} showDetailButton={false} />
       </div>
     </div>
   );

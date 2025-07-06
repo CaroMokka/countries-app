@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { countriesMock } from "../mocks/countriesMock";
 import PageTitle from "../components/PageTitle";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters/Filters";
@@ -7,23 +8,7 @@ import CountriesList from "../components/CountriesList";
 function CountriesPage() {
   const [continent, setContinent] = useState<string>("");
   const [currency, setCurrency] = useState<string>("");
-  const countriesMock = [
-    {
-      code: "AG",
-      name: "Antigua and Barbuda",
-      currency: "XCD",
-      continent: {
-        name: "North America",
-      },
-      capital: "Saint John's",
-      languages: [
-        {
-          name: "English",
-        },
-      ],
-      emoji: "🇦🇬",
-    },
-  ];
+
   function navigate(path: string) {
     console.log(`Navigating to ${path}`);
   }

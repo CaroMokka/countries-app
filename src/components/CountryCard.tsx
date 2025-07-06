@@ -33,12 +33,16 @@ function CountryCard({
         <p className="card-text mb-0">
           <strong>Bandera:</strong> {country.emoji}
         </p>
-        {showDetailButton && (
+        {showDetailButton ? (
           <Link
             to={`/country/${country.code}`}
             className="btn btn-sm btn-warning my-3"
           >
             Ver detalle
+          </Link>
+        ) : (
+          <Link to={"/"} className="btn btn-sm btn-secondary my-3">
+            Volver
           </Link>
         )}
       </div>
