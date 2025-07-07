@@ -1,19 +1,11 @@
 import { gql } from "@apollo/client";
+import { COUNTRY_FIELDS } from "../fragments/CountryFields";
 
 export const GET_COUNTRIES = gql`
+  ${COUNTRY_FIELDS}
   query GetCountries {
     countries {
-      code
-      name
-      currency
-      continent {
-        name
-      }
-      capital
-      languages {
-        name
-      }
-      emoji
+      ...CountryFields
     }
   }
 `;
