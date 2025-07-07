@@ -30,9 +30,11 @@ export const CountryProvider = ({
   }, [data]);
 
   if (loading) {
-    return <div>Loading countries...</div>;
+    return <div>Cargando países...</div>;
   }
-
+  console.log("countries", countries);
+  console.log("Apollo data:", data);
+  console.log(JSON.stringify(data, null, 2));
   return (
     <CountryContext.Provider
       value={{

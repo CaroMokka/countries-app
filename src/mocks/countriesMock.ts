@@ -1,31 +1,51 @@
-import type { Country } from "../types";
+import { GET_COUNTRIES } from "../graphql/queries/GetCountries";
 
-export const countriesMock: Country[] = [
+export const mocks = [
   {
-    code: "US",
-    name: "United States",
-    currency: "USD",
-    continent: { name: "North America" },
-    capital: "Washington, D.C.",
-    emoji: "🇺🇸",
-    languages: [{ name: "English" }],
-  },
-  {
-    code: "FR",
-    name: "France",
-    currency: "EUR",
-    continent: { name: "Europe" },
-    capital: "Paris",
-    emoji: "🇫🇷",
-    languages: [{ name: "French" }],
-  },
-  {
-    code: "JP",
-    name: "Japan",
-    currency: "JPY",
-    continent: { name: "Asia" },
-    capital: "Tokyo",
-    emoji: "🇯🇵",
-    languages: [{ name: "Japanese" }],
+    request: {
+      query: GET_COUNTRIES,
+    },
+    result: {
+      data: {
+        countries: [
+          {
+            __typename: "Country",
+            code: "CL",
+            name: "Chile",
+            capital: "Santiago",
+            currency: "CLP",
+            emoji: "🇨🇱",
+            continent: {
+              __typename: "Continent",
+              name: "South America",
+            },
+            languages: [
+              {
+                __typename: "Language",
+                name: "Spanish",
+              },
+            ],
+          },
+          {
+            __typename: "Country",
+            code: "CN",
+            name: "China",
+            capital: "Beijing",
+            currency: "CNY",
+            emoji: "🇨🇳",
+            continent: {
+              __typename: "Continent",
+              name: "Asia",
+            },
+            languages: [
+              {
+                __typename: "Language",
+                name: "Mandarin",
+              },
+            ],
+          },
+        ],
+      },
+    },
   },
 ];

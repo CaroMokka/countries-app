@@ -22,12 +22,12 @@ function CountryCard({
           <strong>Capital:</strong> {country.capital}
         </p>
         <p className="card-text mb-1">
-          <strong>Continente:</strong> {country.continent.name}
+          <strong>Continente:</strong> {country.continent?.name}
         </p>
         <p className="card-text mb-1">
           <strong>Idioma:</strong>{" "}
-          {country.languages && country.languages.length > 0
-            ? country.languages[0].name
+          {country.languages?.length > 0
+            ? country.languages.map((l) => l.name).join(", ")
             : "No disponible"}
         </p>
         <p className="card-text mb-0">
