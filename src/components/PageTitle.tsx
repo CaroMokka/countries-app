@@ -6,8 +6,8 @@ interface PageTitleProps {
 function PageTitle({ title, subtitle, className }: PageTitleProps) {
   return (
     <div className={`page-title ${className ?? ""}`}>
-      <h1 className="h3 mb-2">{title}</h1>
-      {subtitle && <p className="text-muted">{subtitle}</p>}
+      <h1 className="h3 my-3">{title}</h1>
+      {subtitle && <h5 className="text-muted">{subtitle}</h5>}
     </div>
   );
 }

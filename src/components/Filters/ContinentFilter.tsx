@@ -4,9 +4,9 @@ interface ContinentFilterProps {
 }
 function ContinentFilter({ value, onChange }: ContinentFilterProps) {
   return (
-    <div className="mb-2">
+    <div className="form-control search-bar mb-2">
       <label htmlFor="continentFilter" className="form-label">
-        Filtrar por continente
+        Continente
       </label>
       <select
         id="continentFilter"

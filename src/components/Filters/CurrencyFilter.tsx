@@ -4,24 +4,28 @@ interface CurrencyFilterProps {
 }
 function CurrencyFilter({ value, onChange }: CurrencyFilterProps) {
   return (
-    <div className="mb-2">
-      <label htmlFor="currencyFilter" className="form-label">
-        Filtrar por moneda
-      </label>
-      <select
-        id="currencyFilter"
-        className="form-select"
+    <div className="form-control search-bar mb-2">
+      <label htmlFor="currency">Moneda</label>
+      <input
+        list="currencies"
+        id="currency"
+        name="currency"
+        className="form-control"
+        placeholder="Busca una moneda..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
-      >
-        <option value="">Todas</option>
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="CLP">CLP</option>
-        <option value="ARS">ARS</option>
-        <option value="GBP">GBP</option>
-        {/* Agrega las monedas que necesites */}
-      </select>
+      />
+
+      <datalist id="currencies">
+        <option value="USD" />
+        <option value="EUR" />
+        <option value="GBP" />
+        <option value="JPY" />
+        <option value="BRL" />
+        <option value="MXN" />
+        <option value="CNY" />
+        {/* ⚡ O generar dinámicamente todas tus monedas únicas */}
+      </datalist>
     </div>
   );
 }

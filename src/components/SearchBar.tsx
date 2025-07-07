@@ -13,6 +13,7 @@ function SearchBar({
 }: SearchBarProps) {
   return (
     <div className={`search-bar ${className ?? ""}`}>
+      <label htmlFor="country">País</label>
       <input
         type="text"
         className="form-control"
