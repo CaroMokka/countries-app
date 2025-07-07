@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import { useCountryContext } from "../context/useCountryContext";
+import { filterCountries } from "../utils/filterCountries";
 import PageTitle from "../components/PageTitle";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters/Filters";
@@ -13,22 +14,11 @@ function CountriesPage() {
   const [continent, setContinent] = useState<string>("");
   const [currency, setCurrency] = useState<string>("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-  const normalizedSearch = debouncedSearchTerm.trim().toLowerCase();
 
   const filteredCountries = useMemo(() => {
-    return countries?.filter((country) => {
-      const matchName =
-        normalizedSearch === "" ||
-        country.name.toLowerCase().includes(normalizedSearch);
-
-      const matchContinent =
-        !continent || country.continent?.name === continent;
-
-      const matchCurrency = !currency || country.currency === currency;
-
-      return matchName && matchContinent && matchCurrency;
-    });
-  }, [countries, normalizedSearch, continent, currency]);
+    if (!countries) return [];
+    return filterCountries(countries, debouncedSearchTerm, continent, currency);
+  }, [countries, debouncedSearchTerm, continent, currency]);
 
   if (loading) return <p>Cargando países...</p>;
   if (error) return <p>Error: {error.message}</p>;
