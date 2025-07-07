@@ -8,7 +8,6 @@ function CountryPage() {
   const country = countriesMock.find(
     (item) => item.code.toLowerCase() === id?.toLowerCase()
   );
-  console.log(country);
 
   if (!country) {
     return (

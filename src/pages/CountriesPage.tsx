@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_COUNTRIES } from "../graphql/queries/GetCountries";
 import { countriesMock } from "../mocks/countriesMock";
 import PageTitle from "../components/PageTitle";
 import SearchBar from "../components/SearchBar";
@@ -6,8 +8,13 @@ import Filters from "../components/Filters/Filters";
 import CountriesList from "../components/CountriesList";
 
 function CountriesPage() {
+  const { data, loading, error } = useQuery(GET_COUNTRIES);
   const [continent, setContinent] = useState<string>("");
   const [currency, setCurrency] = useState<string>("");
+  console.log("Data Países", data);
+
+  if (loading) return <p>Cargando países...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   function navigate(path: string) {
     console.log(`Navigating to ${path}`);
