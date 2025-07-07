@@ -14,7 +14,6 @@ const CountryContext = createContext<CountryContextProps>({
   loading: false,
   error: null,
 });
-console.log("conutry Context", CountryContext);
 
 export const CountryProvider = ({
   children,
@@ -33,8 +32,6 @@ export const CountryProvider = ({
   if (loading) {
     return <div>Loading countries...</div>;
   }
-
-  console.log("Data", data);
 
   return (
     <CountryContext.Provider

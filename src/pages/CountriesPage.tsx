@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
 import { useCountryContext } from "../context/useCountryContext";
 import PageTitle from "../components/PageTitle";
 import SearchBar from "../components/SearchBar";
@@ -7,13 +8,22 @@ import CountriesList from "../components/CountriesList";
 
 function CountriesPage() {
   const { countries, loading, error } = useCountryContext();
+  const [searchTerm, setSearchTerm] = useState("");
   const [continent, setContinent] = useState<string>("");
   const [currency, setCurrency] = useState<string>("");
-
-  console.log("Data Países", countries);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   if (loading) return <p>Cargando países...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
+  const normalizedSearch = debouncedSearchTerm.trim().toLowerCase();
+
+  const filteredCountries =
+    normalizedSearch === ""
+      ? countries
+      : countries?.filter((country) =>
+          country.name.toLowerCase().includes(normalizedSearch)
+        );
 
   function navigate(path: string) {
     console.log(`Navigating to ${path}`);
@@ -26,10 +36,10 @@ function CountriesPage() {
       <div className="row">
         <div className="col-12 col-md-6 lg-3">
           <SearchBar
-            value={""}
-            onChange={() => {
-              console.log("SearchBar");
-            }}
+            placeholder="Buscar país..."
+            value={searchTerm}
+            onChange={setSearchTerm}
+            className="form-control mb-3"
           />
         </div>
         <div className="col-12 col-md-6 lg-3">
@@ -42,7 +52,7 @@ function CountriesPage() {
         </div>
         <div className="col-12">
           <CountriesList
-            countries={countries!}
+            countries={filteredCountries!}
             onCountryClick={(code) => navigate(`/countries/${code}`)}
           />
         </div>

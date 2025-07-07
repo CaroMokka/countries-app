@@ -8,6 +8,6 @@ export const useCountryContext = () => {
       "useCountryContext debe usarse dentro de un CountryProvider"
     );
   }
-  console.log("contexto", context);
+
   return context;
 };
