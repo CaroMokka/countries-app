@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_COUNTRIES } from "../graphql/queries/GetCountries";
 import type { Country } from "../types";
@@ -10,10 +10,11 @@ interface CountryContextProps {
 }
 
 const CountryContext = createContext<CountryContextProps>({
-  countries: null,
+  countries: [],
   loading: false,
   error: null,
 });
+console.log("conutry Context", CountryContext);
 
 export const CountryProvider = ({
   children,
@@ -21,11 +22,24 @@ export const CountryProvider = ({
   children: React.ReactNode;
 }) => {
   const { data, loading, error } = useQuery(GET_COUNTRIES);
+  const [countries, setCountries] = useState<Country[]>([]);
+
+  useEffect(() => {
+    if (data?.countries) {
+      setCountries(data.countries);
+    }
+  }, [data]);
+
+  if (loading) {
+    return <div>Loading countries...</div>;
+  }
+
+  console.log("Data", data);
 
   return (
     <CountryContext.Provider
       value={{
-        countries: data?.countries ?? null,
+        countries: countries,
         loading,
         error: error as Error | null,
       }}

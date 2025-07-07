@@ -9,7 +9,7 @@ function CountriesList({
   if (countries.length === 0) {
     return <p>No se encontraron países.</p>;
   }
-
+  console.log("jojooo", countries);
   return (
     <>
       <div className={`row ${className ?? ""}`}>

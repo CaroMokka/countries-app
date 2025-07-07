@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import CountryContext from "./CountryContext";
 
-const useCountryContext = () => {
+export const useCountryContext = () => {
   const context = useContext(CountryContext);
   if (!context) {
     throw new Error(
       "useCountryContext debe usarse dentro de un CountryProvider"
     );
   }
+  console.log("contexto", context);
   return context;
 };
-export default useCountryContext;

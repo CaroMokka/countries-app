@@ -1,4 +1,4 @@
-import useCountryContext from "../context/useCountryContext";
+import { useCountryContext } from "../context/useCountryContext";
 
 export const useCountryByCode = (code: string | undefined) => {
   const { countries } = useCountryContext();

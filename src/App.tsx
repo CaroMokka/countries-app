@@ -1,14 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CountriesPage from "./pages/CountriesPage";
 import CountryPage from "./pages/CountryPage";
+import { CountryProvider } from "./context/CountryContext";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<CountriesPage />} />
-        <Route path="/country/:id" element={<CountryPage />} />
-      </Routes>
-    </BrowserRouter>
+    <CountryProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CountriesPage />} />
+          <Route path="/country/:id" element={<CountryPage />} />
+        </Routes>
+      </BrowserRouter>
+    </CountryProvider>
   );
 }
 

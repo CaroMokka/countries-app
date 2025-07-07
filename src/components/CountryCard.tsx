@@ -25,7 +25,10 @@ function CountryCard({
           <strong>Continente:</strong> {country.continent.name}
         </p>
         <p className="card-text mb-1">
-          <strong>Idioma:</strong> {country.languages[0].name}
+          <strong>Idioma:</strong>{" "}
+          {country.languages && country.languages.length > 0
+            ? country.languages[0].name
+            : "No disponible"}
         </p>
         <p className="card-text mb-0">
           <strong>Moneda:</strong> {country.currency}

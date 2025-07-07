@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_COUNTRIES } from "../graphql/queries/GetCountries";
-import { countriesMock } from "../mocks/countriesMock";
+import { useCountryContext } from "../context/useCountryContext";
 import PageTitle from "../components/PageTitle";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters/Filters";
 import CountriesList from "../components/CountriesList";
 
 function CountriesPage() {
-  const { data, loading, error } = useQuery(GET_COUNTRIES);
+  const { countries, loading, error } = useCountryContext();
   const [continent, setContinent] = useState<string>("");
   const [currency, setCurrency] = useState<string>("");
-  console.log("Data Países", data);
+
+  console.log("Data Países", countries);
 
   if (loading) return <p>Cargando países...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -43,7 +42,7 @@ function CountriesPage() {
         </div>
         <div className="col-12">
           <CountriesList
-            countries={countriesMock}
+            countries={countries!}
             onCountryClick={(code) => navigate(`/countries/${code}`)}
           />
         </div>
