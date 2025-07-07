@@ -23,5 +23,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "__tests__", "e2e/example.spec.ts"]
+  "include": ["src", "__tests__", "e2e/**/*"]
 }
