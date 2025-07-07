@@ -1,4 +1,4 @@
-import { filterCountries } from "../../utils/filterCountries";
+import { filterCountries } from "../../src/utils/filterCountries";
 
 describe("filterCountries", () => {
   const countries = [

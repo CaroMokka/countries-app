@@ -6,6 +6,11 @@ const config: Config = {
   testEnvironment: "jsdom",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  globals: {
+    "ts-jest": {
+      tsconfig: "<rootDir>/tsconfig.test.json",
+    },
+  },
 };
 
 export default config;
