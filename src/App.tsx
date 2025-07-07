@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<CountriesPage />} />
-          <Route path="/country/:id" element={<CountryPage />} />
+          <Route path="/country/:code" element={<CountryPage />} />
         </Routes>
       </BrowserRouter>
     </CountryProvider>

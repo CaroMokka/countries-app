@@ -1,11 +1,12 @@
+import type { Country } from "../types/Country.types";
 import { useCountryContext } from "../context/useCountryContext";
 
-export const useCountryByCode = (code: string | undefined) => {
+export const useCountryByCode = (code: string): Country | null => {
   const { countries } = useCountryContext();
 
   if (!countries || !code) return null;
-  return (
+  const country =
     countries.find((item) => item.code.toLowerCase() === code.toLowerCase()) ??
-    null
-  );
+    null;
+  return country;
 };

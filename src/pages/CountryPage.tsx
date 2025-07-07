@@ -1,13 +1,11 @@
 import { useParams } from "react-router-dom";
-import { countriesMock } from "../mocks/countriesMock";
+import { useCountryByCode } from "../hooks/useCountryByCode";
 import PageTitle from "../components/PageTitle";
 import CountryCard from "../components/CountryCard";
 
 function CountryPage() {
-  const { id } = useParams<{ id: string }>();
-  const country = countriesMock.find(
-    (item) => item.code.toLowerCase() === id?.toLowerCase()
-  );
+  const { code } = useParams<{ code: string }>();
+  const country = useCountryByCode(code!);
 
   if (!country) {
     return (
