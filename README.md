@@ -9,11 +9,11 @@ A **React + TypeScript + GraphQL** project built with care to explore countries,
 
 ## 🚀 What does this app do?
 
-- 🔍 **Lists all countries** fetched from a GraphQL API.
-- 🗺️ Lets you **filter** by name, continent, or currency.
-- 📄 Navigate between pages (CountriesPage & CountryPage) using React Router.
-- 🌐 Shows key details like capital, languages, emoji flag, and region.
-- ✅ Fully **tested**: unit tests, integration, and **End-to-End** with Playwright.
+- **Lists all countries** fetched from a GraphQL API.
+- Lets you **filter** by name, continent, or currency.
+- Navigate between pages (CountriesPage & CountryPage) using React Router.
+- Shows key details like capital, languages, emoji flag, and region.
+- Fully **tested**: unit tests, integration, and **End-to-End** with Playwright.
 
 ---
 
@@ -64,7 +64,7 @@ A **React + TypeScript + GraphQL** project built with care to explore countries,
 
 ---
 
-# How to Run
+# 🚀 How to Run
 
 ### 1. Install dependencies:
 
@@ -112,3 +112,30 @@ npx playwright test --debug
 - React Router
 - Jest + React Testing Library
 - Playwright
+
+## 📌 What we learned
+
+- ✅ Modularize queries with GraphQL fragments.
+- ✅ Use context for global state sharing.
+- ✅ Define TypeScript types from the start.
+- ✅ Write reusable custom hooks.
+- ✅ Test UI, logic, and real user flows E2E.
+- ✅ Keep a clean, maintainable architecture.
+
+## 💡 Next steps
+
+- Add pagination for long lists.
+
+- Improve responsive design.
+
+- Add advanced filters.
+
+- Store user preferences in localStorage.
+
+- Deploy to production.
+
+### Countries App — 2025
+
+```
+Built with ❤️ by Caro Araya
+```
